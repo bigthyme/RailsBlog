@@ -21,6 +21,14 @@ class AuthorsController < ApplicationController
     end
   end
 
+  before_filter :zero_authors_or_authenticated, only: [:new, :create, :update, :destroy]
+  #all methods 
+  def zero_authors_or_authenticated
+    unless Author.count == 0 || current_user
+      redirect_to root_path
+      return false
+    end
+  end
   # GET /authors/new
   # GET /authors/new.json
   def new
