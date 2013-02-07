@@ -9,4 +9,6 @@ class CommentsController < ApplicationController
 
 		redirect_to article_path(@comment.article)
 	end
+
+	#tags = article.taggings.collect{|tagging| tagging.tag}
 end
